@@ -1,0 +1,5 @@
+package paqueteejemplo
+
+class ejemplo {
+  
+}
