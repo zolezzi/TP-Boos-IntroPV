@@ -8,7 +8,7 @@ import com.uqbar.vainilla.DeltaState
 import java.awt.Color
 import com.uqbar.vainilla.events.constants.Key
 
-object QuantumShip extends RichGameComponent [QuantumPeaceMakerScene]{
+class QuantumShip(scene: QuantumPeaceMakerScene) extends RichGameComponent [QuantumPeaceMakerScene]{
   
   val ancho = 50
   val alto = 50
@@ -27,17 +27,13 @@ object QuantumShip extends RichGameComponent [QuantumPeaceMakerScene]{
     }
      if (state.isKeyBeingHold(Key.RIGHT)) {
       this.speed += (speedMagnitude, 0.0)
-    } 
-  
+    }   
      if (state.isKeyBeingHold(Key.DOWN)){
       this.speed += (0.0, speedMagnitude)
     }
-
-  
      if (state.isKeyBeingHold(Key.UP)){
       this.speed += (0.0, -speedMagnitude)
     }
-    
     this.position += this.speed * state.getDelta
   }
   
