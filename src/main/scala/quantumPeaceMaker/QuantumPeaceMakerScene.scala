@@ -1,6 +1,8 @@
 package quantumPeaceMaker
 
 import com.uqbar.vainilla.GameScene
+import scala.collection.JavaConversions._
+
 
 class QuantumPeaceMakerScene extends GameScene{
   
@@ -8,4 +10,7 @@ class QuantumPeaceMakerScene extends GameScene{
   
   this.addComponent(EnemySpawner)
   this.addComponent(quantumShip)
+  
+  def collisionableGameComponents: List[CollisionDrivenGameComponent] =
+    this.getComponents.filter(_.isInstanceOf[CollisionDrivenGameComponent]).map(_.asInstanceOf[CollisionDrivenGameComponent]).toList
 }

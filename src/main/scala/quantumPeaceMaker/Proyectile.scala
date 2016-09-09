@@ -21,7 +21,7 @@ class Proyectile(appearance: Appearance, scene: QuantumPeaceMakerScene, x: Doubl
     super.update(state)
     //checkCollisions
     applySpeed(state)
-    if ( this.isOutsideOfScreen){
+    if (this.isOutsideOfScreen){
       this.destroy
     }
   }
