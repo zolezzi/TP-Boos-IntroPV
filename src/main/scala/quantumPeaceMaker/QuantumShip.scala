@@ -21,16 +21,23 @@ object QuantumShip extends RichGameComponent [QuantumPeaceMakerScene]{
   this.position = ((QuantumPeaceMakerGame.width.toDouble - width) / 2, QuantumPeaceMakerGame.height - height.toDouble * 2)
 
   override def update(state: DeltaState) = {
+    this.speed = (0,0)
     if (state.isKeyBeingHold(Key.LEFT)) {
-      this.speed = (-speedMagnitude, 0.0)
-    } else if (state.isKeyBeingHold(Key.RIGHT)) {
-      this.speed = (speedMagnitude, 0.0)
-    } else if (state.isKeyBeingHold(Key.DOWN)){
-      this.speed = (0.0, speedMagnitude)
-    }else if (state.isKeyBeingHold(Key.UP)){
-      this.speed = (0.0, -speedMagnitude)
-    }else {this.speed = (0.0, 0.0)}
+      this.speed += (-speedMagnitude, 0.0)
+    }
+     if (state.isKeyBeingHold(Key.RIGHT)) {
+      this.speed += (speedMagnitude, 0.0)
+    } 
+  
+     if (state.isKeyBeingHold(Key.DOWN)){
+      this.speed += (0.0, speedMagnitude)
+    }
 
+  
+     if (state.isKeyBeingHold(Key.UP)){
+      this.speed += (0.0, -speedMagnitude)
+    }
+    
     this.position += this.speed * state.getDelta
   }
   

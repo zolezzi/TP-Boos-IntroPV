@@ -23,7 +23,7 @@ object EnemySpawner extends GameComponent[QuantumPeaceMakerScene] {
   
   override def update(state: DeltaState) = {
     if(state.isKeyPressed(Key.SPACE)) {
-      spawning = !spawning
+      spawning = !spawning // Desactiva el spawner al apretar especio
     }
     
     if(spawning) {
