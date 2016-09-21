@@ -44,4 +44,9 @@ trait RichGameComponent[T <: GameScene] extends GameComponent[T] {
   
   def position = Vector2D(getX, getY)
 
+  def position_=(position: Vector2D) = {
+    this.setX(position.x1)
+    this.setY(position.x2)
+  }
+
 }
