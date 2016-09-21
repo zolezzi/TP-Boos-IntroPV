@@ -1,12 +1,11 @@
 package quantumPeaceMaker
 
-
-import vainilla.commons.components.RichGameComponent
 import com.uqbar.vainilla.appearances.Rectangle
 import ar.pablitar.vainilla.commons.math.Vector2D
 import com.uqbar.vainilla.DeltaState
 import java.awt.Color
 import com.uqbar.vainilla.events.constants.Key
+import ar.pablitar.vainilla.commons.components.RichGameComponent
 
 class QuantumShip(scene: QuantumPeaceMakerScene) extends RichGameComponent [QuantumPeaceMakerScene]{
   
@@ -18,7 +17,7 @@ class QuantumShip(scene: QuantumPeaceMakerScene) extends RichGameComponent [Quan
   
   val speedMagnitude = 500.0
 
-  this.position = ((QuantumPeaceMakerGame.width.toDouble - width) / 2, QuantumPeaceMakerGame.height - height.toDouble * 2)
+  this.position = ((QuantumPeaceMakerGame.width.toDouble - this.getWidth) / 2, QuantumPeaceMakerGame.height - this.getHeight.toDouble * 2)
 
   override def update(state: DeltaState) = {
     this.speed = (0,0)
@@ -34,12 +33,12 @@ class QuantumShip(scene: QuantumPeaceMakerScene) extends RichGameComponent [Quan
      if (state.isKeyBeingHold(Key.UP)){
       this.speed += (0.0, -speedMagnitude)
     }
-    this.position += this.speed * state.getDelta
+    this.position = this.position + this.speed * state.getDelta
   }
   
    override def position_=(v:Vector2D) = super.position_=(QuantumPeaceMakerGame.bounds.limit(v, (width.toDouble, height.toDouble)))
 
   def center = {
-    position + (Vector2D(width, height) * 0.5)
+    position + (Vector2D(this.getWidth, this.getHeight) * 0.5)
   }
 }
