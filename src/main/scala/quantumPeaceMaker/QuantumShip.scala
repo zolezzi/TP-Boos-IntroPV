@@ -1,7 +1,7 @@
 package quantumPeaceMaker
 
 
-import ar.pablitar.vainilla.commons.components.RichGameComponent
+import vainilla.commons.components.RichGameComponent
 import com.uqbar.vainilla.appearances.Rectangle
 import ar.pablitar.vainilla.commons.math.Vector2D
 import com.uqbar.vainilla.DeltaState
