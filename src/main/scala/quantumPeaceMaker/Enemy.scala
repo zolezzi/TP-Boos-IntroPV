@@ -5,10 +5,11 @@ import com.uqbar.vainilla.appearances.Circle
 import java.awt.Color
 import com.uqbar.vainilla.DeltaState
 
+
 class Enemy extends QuantumPeaceMakerComponent {
     
 
-  val diameter = 80
+  val diameter = 40
   val radius = diameter.toDouble / 2
   val initialSpeed: Vector2D = (0.0, 300.0)
 
@@ -54,12 +55,13 @@ class Enemy extends QuantumPeaceMakerComponent {
   }
 
   def reset() = {
-    this.position = (randomPosition(), QuantumPeaceMakerGame.height / 10.0)
+    this.position = (randomPosition(), -600.0)
     speed = initialSpeed
     this.setDestroyPending(false)
     this
   }
 
+  
     def spawn() = {
      new Enemy()
     }

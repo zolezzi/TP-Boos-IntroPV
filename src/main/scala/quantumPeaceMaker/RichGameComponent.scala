@@ -1,6 +1,5 @@
 package quantumPeaceMaker
 
-
 import com.uqbar.vainilla.GameScene
 import com.uqbar.vainilla.GameComponent
 import ar.pablitar.vainilla.commons.math.Vector2D
@@ -34,7 +33,7 @@ trait RichGameComponent[T <: GameScene] extends GameComponent[T] {
   }
   
   def initializeFrom(component:GameComponent[T]) = {
-    this.setScene(component.getScene)
+    //this.setScene(component.getScene)
     this.setX(component.getX)
     this.setY(component.getY)
   }
@@ -42,11 +41,11 @@ trait RichGameComponent[T <: GameScene] extends GameComponent[T] {
   def getWidth = this.getAppearance.getWidth
   def getHeight = this.getAppearance.getHeight
   
-  def position = Vector2D(getX, getY)
-
-  def position_=(position: Vector2D) = {
+   def position_=(position: Vector2D) = {
     this.setX(position.x1)
     this.setY(position.x2)
   }
+
+  def position: Vector2D = (getX, getY)
 
 }
