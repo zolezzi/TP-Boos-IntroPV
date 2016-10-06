@@ -13,7 +13,7 @@ class QuantumPeaceMaker extends Game{
   }
   
   def setUpScenes(): Unit = {
-   this.setCurrentScene(new QuantumPeaceMakerScene())
+   this.setCurrentScene(new QuantumPeaceMakerScene(this))
   }
   
   def initializeResources(): Unit = {

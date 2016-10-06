@@ -7,24 +7,24 @@ trait Weapon extends GameComponent[QuantumPeaceMakerScene] {
 
   var firing = false
   var cooldown = 0.0
-  
+
   def coolDownTime: Double
-  
+
   override def update(state: DeltaState): Unit = {
     super.update(state)
-    
-    if(this.firing){
+
+    if (this.firing) {
       this.coolDownAndFire(state.getDelta)
     }
-    
+
     this.cooldown = (this.cooldown - state.getDelta) max 0
   }
 
-  def firePressed{
+  def firePressed {
     this.firing = true
   }
-  
-  def fireReleased{
+
+  def fireReleased {
     this.firing = false
   }
 
@@ -34,7 +34,7 @@ trait Weapon extends GameComponent[QuantumPeaceMakerScene] {
       this.cooldown = coolDownTime
     }
   }
-  
+
   def doFire
 
 }

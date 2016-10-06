@@ -1,5 +1,4 @@
 package quantumPeaceMaker
-
 import com.uqbar.vainilla.GameScene
 import com.uqbar.vainilla.GameComponent
 import ar.pablitar.vainilla.commons.math.Vector2D
@@ -33,7 +32,7 @@ trait RichGameComponent[T <: GameScene] extends GameComponent[T] {
   }
   
   def initializeFrom(component:GameComponent[T]) = {
-    //this.setScene(component.getScene)
+   // this.setScene(component.getScene)
     this.setX(component.getX)
     this.setY(component.getY)
   }

@@ -1,12 +1,16 @@
 package quantumPeaceMaker
 
+
 import com.uqbar.vainilla.GameScene
-import scala.collection.JavaConversions._
+import com.uqbar.vainilla.Game
 
-
-class QuantumPeaceMakerScene extends GameScene{
+class QuantumPeaceMakerScene(game : Game) extends GameScene{
+  
+  this.setGame(game)
+  this.addComponent(new StarFieldBackground(this, game))
   
   val player = new QuantumShip(this)
+
   
   this.addComponent(EnemySpawner)
   this.addComponent(player)
