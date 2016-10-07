@@ -57,6 +57,7 @@ class Enemy extends QuantumPeaceMakerComponent {
     }
 
     if (this.isBelowTheScreen) {
+      this.getScene.score.resetCombo
       this.destroy()
     }
   }
@@ -105,8 +106,18 @@ class Enemy extends QuantumPeaceMakerComponent {
   def spawn() = {
     new Enemy()
   }
-
+  
+  def actualizarValores(){
+    this.getScene.score.sumScore // MEJORA se suma un punto por nave eliminada
+    
+    //this.getScene.addComponent(new Score(this.getScene))  EL NUMERO QUE SALTA AL MATAR NAVES
+    this.getScene.score.sumCombo //MEJORA Aumenta la chance de critico por cada enemigo eliminado
+    this.getScene.score.sumMaxCombo //MEJORA aumenta el daño critico por enemigo eliminado
+  }
+  
   def hasbeenHitBy(arg: LaserShot) = {
-   this.destroy()
+    this.actualizarValores()
+    //this.getScene.addComponent(new Score(this.getScene))  EL NUMERO QUE Muestra al hacer daño
+    this.destroy()
   }
 }

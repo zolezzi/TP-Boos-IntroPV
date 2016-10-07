@@ -5,8 +5,8 @@ import ar.pablitar.vainilla.commons.math.RectangularBounds
 import scala.util.Random
 
 object QuantumPeaceMakerGame extends App{
-  val width = 800
-  val height = 600
+  val width = 850
+  val height = 650
   
   val randomizer = new Random
   
