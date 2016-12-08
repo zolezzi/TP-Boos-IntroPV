@@ -3,6 +3,7 @@ package quantumPeaceMaker
 
 import com.uqbar.vainilla.appearances.Sprite
 import com.uqbar.vainilla.appearances.Animation
+import com.uqbar.vainilla.sound.SoundBuilder
 
 object Resources {
 
@@ -17,10 +18,16 @@ object Resources {
   val enemySprite = Sprite.fromImage("enemy.png").center()
   
   val laserShotSprite = Sprite.fromImage("laserRed-difuso.png").center()
+ 
+  val spriteExplosion = Sprite.fromImage("explosion.png").center()
   
   val quantumShip = Sprite.fromImage("QuantumShip.png").center()
   
   val planetSprite = Sprite.fromImage("planet.png").center()
   
-  
+  val laserSound = new SoundBuilder().buildSound(this.getClass.getClassLoader.getResourceAsStream("laser.wav"))
+
+   val backgroundSound = new SoundBuilder().buildSound(this.getClass.getClassLoader.getResourceAsStream("backgroundSound.wav"))
+   
+   val explosion = new SoundBuilder().buildSound(this.getClass.getClassLoader.getResourceAsStream("explosion.wav"))
 }

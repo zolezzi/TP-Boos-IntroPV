@@ -10,5 +10,6 @@ class LaserShotWeapon(scene: QuantumPeaceMakerScene, ship: QuantumShip) extends 
     val xSpeed = (QuantumPeaceMakerGame.randomizer.nextDouble - 0.5) *  100
     var laser = new LaserShot(this.getScene,ship.getX, ship.getY, xSpeed)
     scene.addComponent(laser)
+    Resources.laserSound.play(0.1f)
   }
 }

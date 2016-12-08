@@ -6,12 +6,16 @@ import ar.pablitar.vainilla.commons.math.Vector2D
 import com.uqbar.vainilla.DeltaState
 import java.awt.Color
 import com.uqbar.vainilla.events.constants.Key
+import java.awt.Graphics2D
 
 class QuantumShip(scene : QuantumPeaceMakerScene) extends RichGameComponent [QuantumPeaceMakerScene]{
   
   val ancho = 50
   val alto = 50
   this.setAppearance(new Rectangle(Color.BLACK, ancho, alto))
+  private var _showDebug = false
+  override def showDebug = _showDebug
+  def showDebug_=(value: Boolean) = _showDebug = value
   
   setScene(scene)
   
@@ -47,11 +51,34 @@ class QuantumShip(scene : QuantumPeaceMakerScene) extends RichGameComponent [Qua
      if(state.isKeyPressed(Key.CTRL)){
        weapon.coolDownAndFire(state.getDelta)
      }
-    this.position = this.position + this.speed * state.getDelta}
-  
-   override def position_=(v:Vector2D) = super.position_=(QuantumPeaceMakerGame.bounds.limit(v, (this.getWidth.toDouble, this.getHeight.toDouble)))
-
-  def center = {
-    position + (Vector2D(this.getWidth, this.getHeight) * 0.5)
+    this.position = this.position + this.speed * state.getDelta
+   
+    if(state.isKeyPressed(Key.E)) {
+      this.showDebug = !this.showDebug
+    }
+    if(state.isKeyPressed(Key.F)) {
+      this.showDebug = !this.showDebug
+    }
+ 
   }
+  
+    override def render(graphics: Graphics2D) = {
+    
+      if(showDebug) {
+        super.render(graphics)
+        this.getScene.shopUp(graphics)
+      }
+      if(!showDebug){
+        
+      }
+    }
+    
+  
+    override def position_=(v:Vector2D) = super.position_=(QuantumPeaceMakerGame.bounds.limit(v, (this.getWidth.toDouble, this.getHeight.toDouble)))
+
+    def center = {
+      position + (Vector2D(this.getWidth, this.getHeight) * 0.5)
+    }
+   
+
 }

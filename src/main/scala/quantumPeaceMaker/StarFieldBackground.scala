@@ -16,7 +16,7 @@ object StarFieldBackground {
 }
 
 class StarFieldBackground(scene: QuantumPeaceMakerScene, game: Game) extends GameComponent[QuantumPeaceMakerScene] {
-  this.setZ(-2)
+  this.setZ(-5)
   this.setScene(scene)
   this.setAppearance(new Rectangle(Color.DARK_GRAY, this.getGame().getDisplayWidth(), this.getGame().getDisplayHeight()))
 

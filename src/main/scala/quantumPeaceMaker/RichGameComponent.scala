@@ -2,6 +2,7 @@ package quantumPeaceMaker
 import com.uqbar.vainilla.GameScene
 import com.uqbar.vainilla.GameComponent
 import ar.pablitar.vainilla.commons.math.Vector2D
+import java.awt.Graphics2D
 
 trait RichGameComponent[T <: GameScene] extends GameComponent[T] {
 
@@ -44,7 +45,9 @@ trait RichGameComponent[T <: GameScene] extends GameComponent[T] {
     this.setX(position.x1)
     this.setY(position.x2)
   }
-
+  
+   def showDebug = false
+  
   def position: Vector2D = (getX, getY)
 
 }

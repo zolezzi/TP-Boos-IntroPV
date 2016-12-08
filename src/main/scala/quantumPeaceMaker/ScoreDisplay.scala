@@ -16,6 +16,7 @@ class ScoreDisplay(scene: QuantumPeaceMakerScene) extends RichGameComponent[Quan
 
   this.setX(10)
   this.setY(10)
+  this.setZ(5)
 
   def updateLabel = {
     //this.setAppearance(new Label(new Font(Font.SANS_SERIF, Font.BOLD, 20), Color.RED, "Score: " + score))

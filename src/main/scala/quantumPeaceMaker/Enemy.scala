@@ -19,6 +19,8 @@ class Enemy extends QuantumPeaceMakerComponent {
   override def showDebug = _showDebug
   def showDebug_=(value: Boolean) = _showDebug = value
  
+  this.setZ(5)
+  
   def sideWalls = List(
     Semiplane(topLeft() + (8, 8), Vector2D(3.1, -1)),
     Semiplane(topRight() + (-8, 8), Vector2D(-3.1, -1))
@@ -51,7 +53,7 @@ class Enemy extends QuantumPeaceMakerComponent {
     var xp =(this.position.x1.toInt)
     var yp =(this.position.x2.toInt)
     rec.setBounds(xp, yp, ancho, alto)
-    this.showDebug = !this.showDebug
+   // this.showDebug = !this.showDebug
     if(state.isKeyPressed(Key.D)) {
       this.showDebug = !this.showDebug
     }
@@ -116,8 +118,12 @@ class Enemy extends QuantumPeaceMakerComponent {
   }
   
   def hasbeenHitBy(arg: LaserShot) = {
-    this.actualizarValores()
-    //this.getScene.addComponent(new Score(this.getScene))  EL NUMERO QUE Muestra al hacer daño
-    this.destroy()
+   this.destroy()
+   this.actualizarValores()
+   var feedBack = new AttackFeedback()
+   feedBack.setX(this.getX)
+   feedBack.setY(this.getY)
+   this.getScene.addComponent(feedBack)
+   Resources.explosion.play(0.5f)
   }
 }

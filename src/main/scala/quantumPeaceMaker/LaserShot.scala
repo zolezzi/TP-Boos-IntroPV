@@ -45,7 +45,8 @@ class LaserShot(scene: QuantumPeaceMakerScene, x: Double, y: Double, xSpeed:Doub
       //if(Collision.hayColision(this, enemy)){
       if(this.isCollidedBy(enemy)){
        // if(enemy != null && this != null){
-          enemy.hasbeenHitBy(this)
+        crearExplosionPorCollision()  
+        enemy.hasbeenHitBy(this)
           this.destroy()
       } 
     }
@@ -56,6 +57,13 @@ class LaserShot(scene: QuantumPeaceMakerScene, x: Double, y: Double, xSpeed:Doub
 
     }
   }  
+  
+  def crearExplosionPorCollision() ={
+    val e = new Explosion()
+    e.position = this.position
+    this.getScene.addComponent(e) 
+    this.destroy()
+  }
   
   def isOutsideOfTheScreen: Boolean = {
     (this.position.x2 < -650)

@@ -1,0 +1,5 @@
+package quantumPeaceMaker
+
+object StoreQuantumPeaceMaker {
+  
+}
