@@ -14,12 +14,24 @@ class QuantumPeaceMakerScene(game : Game) extends GameScene{
  
   //val shop = new SceneShop(this)
   
+  val enemy2 = new EnemyLateral
+  val enemy3 = new EnemyLateral
+  val my2 = new EnemyLateral
+  val eny2 = new EnemyLateral
+  val a = new EnemyLateral
+  
   val player = new QuantumShip(this)
   val score = new ScoreDisplay(this)
   
   this.addComponent(EnemySpawner)
   this.addComponent(player)
   this.addComponent(score)
+ 
+  this.addComponent(enemy2)
+  this.addComponent(enemy3)
+  this.addComponent(my2)
+  this.addComponent(eny2)
+  this.addComponent(a)
   
   Resources.backgroundSound.play()
   

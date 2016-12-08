@@ -62,16 +62,16 @@ class QuantumShip(scene : QuantumPeaceMakerScene) extends RichGameComponent [Qua
  
   }
   
-    override def render(graphics: Graphics2D) = {
-    
-      if(showDebug) {
-        super.render(graphics)
-        this.getScene.shopUp(graphics)
-      }
-      if(!showDebug){
-        
-      }
-    }
+//    override def render(graphics: Graphics2D) = {
+//    
+//      if(showDebug) {
+//        super.render(graphics)
+//        this.getScene.shopUp(graphics)
+//      }
+//      if(!showDebug){
+//        
+//      }
+//    }
     
   
     override def position_=(v:Vector2D) = super.position_=(QuantumPeaceMakerGame.bounds.limit(v, (this.getWidth.toDouble, this.getHeight.toDouble)))
