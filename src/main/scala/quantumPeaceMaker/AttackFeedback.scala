@@ -25,6 +25,7 @@ class AttackFeedback() extends RichGameComponent[QuantumPeaceMakerScene] {
   
   def scale = 1 + 5 * t - t * t * 5
   //def distanceOffset = Vector2D(t * 2, -5 * t + 8 * t * t * t) * 100
+  
   def distanceOffset = Vector2D(t * 2, -5 * t + 8 * t * t * t) * 100
   def alpha = (1 - t).toFloat
   

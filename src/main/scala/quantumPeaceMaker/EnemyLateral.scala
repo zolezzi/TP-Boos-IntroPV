@@ -17,8 +17,8 @@ class EnemyLateral extends SpeedyComponent[QuantumPeaceMakerScene]{
       var llegueAlaDerecha = false
       var randomFeed = new Random()
 
+	    //var x = true
 	    var x = true
-	    
       val enemy1 = Resources.enemy1
       this.setAppearance(enemy1)
 

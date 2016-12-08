@@ -33,6 +33,7 @@ class QuantumPeaceMakerScene(game : Game) extends GameScene{
   this.addComponent(eny2)
   this.addComponent(a)
   
+  
   Resources.backgroundSound.play()
   
   def shopUp(graphics: Graphics2D)={
