@@ -4,6 +4,7 @@ import scala.collection._
 
 object ControllerTheCollision {
    
+  
   //var enemigos: List[(Enemy)] = List()
   var enemigos = mutable.MutableList[Enemy]()
   //var lasers: List[(LaserShot)] = List()

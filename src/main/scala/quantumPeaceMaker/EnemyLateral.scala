@@ -11,6 +11,7 @@ import scala.util.Random
 
 class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[QuantumPeaceMakerScene]{
     
+  
       val ancho = 50
       val alto = 50
 	    val initialSpeed: Vector2D = (200.0, 300.0)

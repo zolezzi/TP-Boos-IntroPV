@@ -64,7 +64,6 @@ class EnemySpawner(scene: QuantumPeaceMakerScene) extends GameComponent[QuantumP
     ninjasEveryFour = ninjasEveryFour - 1
     this.getScene.addComponent(enemy)
   }
- 
 
 }
 

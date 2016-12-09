@@ -10,6 +10,7 @@ object Resources {
     val spriteSize = 200
     val scale = 0.8
 
+    
     def spriteHeight = (200 * scale).toInt
   
     def spriteWidth = (200 * scale).toInt

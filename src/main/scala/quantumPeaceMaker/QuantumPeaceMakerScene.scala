@@ -12,6 +12,7 @@ class QuantumPeaceMakerScene(game : Game) extends GameScene{
   this.setGame(game)
   this.addComponent(new StarFieldBackground(this, game))
  
+  
   //val shop = new SceneShop(this)
   
 //  val enemy2 = new EnemyLateral
