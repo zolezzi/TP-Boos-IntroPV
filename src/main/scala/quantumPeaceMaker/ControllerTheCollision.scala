@@ -9,10 +9,17 @@ object ControllerTheCollision {
   //var lasers: List[(LaserShot)] = List()
   var lasers = mutable.MutableList[LaserShot]()
   
+  var enemigosMosquitos = mutable.MutableList[EnemyLateral]()
+  
+  
   def addEnemy (enemy: Enemy){
     this.enemigos.+=(enemy) 
   }
 
+  def addEnemyLateral (enemy: EnemyLateral){
+    this.enemigosMosquitos.+=(enemy) 
+  }  
+  
   def addLaser(laser: LaserShot){
     this.lasers.+=(laser)
   }
@@ -35,6 +42,16 @@ object ControllerTheCollision {
       }
     }
     this.enemigos = res
+  }
+
+  def removeEnemyLateral(enemy : EnemyLateral){
+    var res = mutable.MutableList[EnemyLateral]()
+    for(e <- this.enemigosMosquitos){
+      if(e != enemy){
+        res.+=(e)
+      }
+    }
+    this.enemigosMosquitos = res
   }
   
   def getSize(){

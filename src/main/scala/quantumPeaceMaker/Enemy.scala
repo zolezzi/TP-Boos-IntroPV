@@ -118,8 +118,9 @@ class Enemy extends QuantumPeaceMakerComponent {
   }
   
   def hasbeenHitBy(arg: LaserShot) = {
-   this.destroy()
    this.actualizarValores()
+    this.destroy()
+
    var feedBack = new AttackFeedback()
    feedBack.setX(this.getX)
    feedBack.setY(this.getY)

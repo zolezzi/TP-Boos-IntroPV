@@ -16,7 +16,7 @@ object Resources {
   
     //val spriteExplosion = Sprite.fromImage("explosion.png").center()
   
-    val enemySprite = Sprite.fromImage("enemy.png").center()
+    val enemySprite = Sprite.fromImage("transparentUno.png").center()
   
     val laserShotSprite = Sprite.fromImage("laserRed-difuso.png").center()
  

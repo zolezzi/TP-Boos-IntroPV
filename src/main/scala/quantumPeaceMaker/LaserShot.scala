@@ -50,6 +50,16 @@ class LaserShot(scene: QuantumPeaceMakerScene, x: Double, y: Double, xSpeed:Doub
           this.destroy()
       } 
     }
+    
+    for(enemy2 <- ControllerTheCollision.enemigosMosquitos){
+      //if(Collision.hayColision(this, enemy)){
+      if(this.isCollidedByEnemyLateral(enemy2)){
+       // if(enemy != null && this != null){
+        crearExplosionPorCollision()  
+        enemy2.hasbeenHitBy(this)
+        this.destroy()
+      } 
+    }
     applySpeed(state)
     if (isOutsideOfTheScreen){
       this.destroy
@@ -101,10 +111,14 @@ class LaserShot(scene: QuantumPeaceMakerScene, x: Double, y: Double, xSpeed:Doub
       CollisionDetector.INSTANCE.collidesCircleAgainstRect(this.position.x1 - radius, this.position.x2 - radius, this.radius,
         enemy.topLeft().x1, enemy.topLeft().x2, enemy.ancho, this.radius)
     }
-    
+
+    def isCollidedByEnemyLateral(enemy : EnemyLateral) ={
+      CollisionDetector.INSTANCE.collidesCircleAgainstRect(this.position.x1 - radius, this.position.x2 - radius, this.radius,
+      enemy.topLeft().x1, enemy.topLeft().x2, enemy.ancho, this.radius)
+    }
     
     override def destroy() {
-    // ControllerTheCollision.removeEnemy(this)
+     //ControllerTheCollision.removeEnemyLateral(this)
      super.destroy()
      //laserShot.despawn(this);
   }

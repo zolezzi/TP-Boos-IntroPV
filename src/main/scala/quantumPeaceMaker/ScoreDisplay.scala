@@ -14,13 +14,14 @@ class ScoreDisplay(scene: QuantumPeaceMakerScene) extends RichGameComponent[Quan
 
   this.updateLabel
 
-  this.setX(10)
+  this.setX(620)
   this.setY(10)
   this.setZ(5)
 
   def updateLabel = {
     //this.setAppearance(new Label(new Font(Font.SANS_SERIF, Font.BOLD, 20), Color.RED, "Score: " + score))
-    this.setAppearance(new Label(new Font(Font.SANS_SERIF, Font.BOLD, 18), Color.MAGENTA.darker(), "HitPoints: Score: " + score + "   CriticalDamage: " + maxCombo +"   CriticalChance: " + combo))
+    this.setAppearance(new Label(new Font(Font.SANS_SERIF, Font.BOLD, 25), Color.WHITE.darker(), "Score: " + score ))
+    //this.setAppearance(new Label(new Font(Font.SANS_SERIF, Font.BOLD, 18), Color.BLACK, "Score: " + score ))
     //this.setAppearance(new Label(new Font(Font.SANS_SERIF, Font.BOLD, 20), Color.GREEN, "MaxCombo: " + maxCombo))
     //this.setAppearance(new Label(new Font(Font.SANS_SERIF, Font.BOLD, 20), Color.BLUE, "Combo: " + combo))
   
