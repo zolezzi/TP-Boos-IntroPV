@@ -15,10 +15,9 @@ import java.lang.StrictMath.RandomNumberGeneratorHolder
 import java.util.Random
 
 
-class AttackFeedback() extends RichGameComponent[QuantumPeaceMakerScene] {
+class AttackFeedback(scoreInput:Int) extends RichGameComponent[QuantumPeaceMakerScene] {
   
   val duration = 0.9
-    
   val animationProgress = new TimedValue(duration, InterpolatorKind.EaseOutQuad)
   
   def t = animationProgress.currentValue
@@ -46,7 +45,7 @@ class AttackFeedback() extends RichGameComponent[QuantumPeaceMakerScene] {
     return res
   }
   
-  this.setAppearance(LabelUtils.damageText(this.getRand().toString, Color.YELLOW))
+  this.setAppearance(LabelUtils.damageText(scoreInput.toString, Color.YELLOW))
   this.position = (400,300)
   
   

@@ -27,8 +27,8 @@ class ScoreDisplay(scene: QuantumPeaceMakerScene) extends RichGameComponent[Quan
   
   }
 
-  def sumScore = {
-    score += 1 + (1* this.combo)
+  def sumScore(n: Int) = {
+    score += n 
     this.updateLabel
   }
   

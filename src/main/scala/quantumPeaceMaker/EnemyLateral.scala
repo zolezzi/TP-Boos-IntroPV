@@ -103,7 +103,7 @@ class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[Quantum
     }
   
     def actualizarValores()={
-      score2.sumScore // MEJORA se suma un punto por nave eliminada
+      score2.sumScore(this.position.x2.toInt) // MEJORA se suma un punto por nave eliminada
     
     //this.getScene.addComponent(new Score(this.getScene))  EL NUMERO QUE SALTA AL MATAR NAVES
       score2.sumCombo //MEJORA Aumenta la chance de critico por cada enemigo eliminado
@@ -115,7 +115,7 @@ class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[Quantum
    ControllerTheCollision.removeEnemyLateral(this) 
    this.destroy()
 
-   var feedBack = new AttackFeedback()
+   var feedBack = new AttackFeedback(this.getY.toInt)
    feedBack.setX(this.getX)
    feedBack.setY(this.getY)
    //this.getScene.addComponent(feedBack)

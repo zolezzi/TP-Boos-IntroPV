@@ -123,7 +123,7 @@ class Enemy(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent {
 //  }
   
   def actualizarValores(){
-    this.getScene.score.sumScore // MEJORA se suma un punto por nave eliminada
+    this.getScene.score.sumScore(this.position.x2.toInt) // MEJORA se suma un punto por nave eliminada
     
     //this.getScene.addComponent(new Score(this.getScene))  EL NUMERO QUE SALTA AL MATAR NAVES
     this.getScene.score.sumCombo //MEJORA Aumenta la chance de critico por cada enemigo eliminado
@@ -134,7 +134,7 @@ class Enemy(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent {
    this.actualizarValores()
     this.destroy()
 
-   var feedBack = new AttackFeedback()
+   var feedBack = new AttackFeedback(this.getY.toInt)
    feedBack.setX(this.getX)
    feedBack.setY(this.getY)
    this.getScene.addComponent(feedBack)
