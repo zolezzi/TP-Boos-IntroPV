@@ -18,18 +18,21 @@ case class Cooldown(cooldown: Double, action: (() => Unit)) {
 }
 
 class EnemySpawner(scene: QuantumPeaceMakerScene) extends GameComponent[QuantumPeaceMakerScene]{
+  
+  
   this.setScene(scene)
   
-   var spawning = true
+  var spawning = true
   
   val cooldown = Cooldown(0.6, () => spawnEnemy())
+  val cooldownMosquito = Cooldown(0.2,() => spawnEnemyMosquito())
   
   override def update(state: DeltaState) = {
     if(state.isKeyPressed(Key.SPACE)) {
       spawning = !spawning
     }
-    
-    if(spawning) {
+    cooldownMosquito.update(state)
+    if(spawning &&this.getScene.score.score >= 100) {
       cooldown.update(state)
     }
   }
@@ -48,69 +51,23 @@ class EnemySpawner(scene: QuantumPeaceMakerScene) extends GameComponent[QuantumP
   var ninjasEveryFour = 4
   
   def spawnEnemy() = {
+   
     val enemy = new Enemy(this.getScene)
     ControllerTheCollision.addEnemy(enemy)
-    val enemy2 = new EnemyLateral(this.getScene)
+    this.getScene.addComponent(enemy)     
+ 
+  }
+  
+  def spawnEnemyMosquito()={
+     val enemy2 = new EnemyLateral(this.getScene)
     
-    if(ninjasEveryFour  == 0){
-     // var ninjaShips = 1
-      //while(ninjaShips > 0){
+      if(ninjasEveryFour  == 0){
         this.getScene.addComponent(enemy2)
         ControllerTheCollision.addEnemyLateral(enemy2)
-       // ninjaShips = ninjaShips - 1
-     // }
-    ninjasEveryFour = 3
-    }
-    ninjasEveryFour = ninjasEveryFour - 1
-    this.getScene.addComponent(enemy)
+        ninjasEveryFour = 3
+      }
+      ninjasEveryFour = ninjasEveryFour - 1
   }
 
 }
-
-
-object EnemySpawner extends GameComponent[QuantumPeaceMakerScene] {
-//  var spawning = true
-//  
-//  val cooldown = Cooldown(0.6, () => spawnEnemy())
-//  
-//  override def update(state: DeltaState) = {
-//    if(state.isKeyPressed(Key.SPACE)) {
-//      spawning = !spawning
-//    }
-//    
-//    if(spawning) {
-//      cooldown.update(state)
-//    }
-//  }
-//
-//  var randomFeed = new Random()
-//  
-//  def getRand():Int ={
-//      var res = randomFeed.nextInt()
-//      if(res <0)
-//      {
-//       res =  res * -1
-//       }
-//      return res
-//    }
-//
-//  var ninjasEveryFour = 4
   
-//  def spawnEnemy() = {
-//    val enemy = new Enemy
-//    ControllerTheCollision.addEnemy(enemy)
-//   // val enemy2 = new EnemyLateral
-//    ControllerTheCollision.addEnemyLateral(enemy2)
-//    if(ninjasEveryFour  == 0){
-//      var ninjaShips = 4
-//      while(ninjaShips > 0){
-//        this.getScene.addComponent(enemy2)
-//        ninjaShips = ninjaShips - 1
-//      }
-//    ninjasEveryFour = 4
-//    }
-//    ninjasEveryFour = ninjasEveryFour - 1
-//    this.getScene.addComponent(enemy)
-//  }
-//  
-}

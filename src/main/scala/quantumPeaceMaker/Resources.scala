@@ -30,7 +30,9 @@ object Resources {
     val enemy1 = Sprite.fromImage("transparentDos.png").center() 
   
     val planetSprite = Sprite.fromImage("planet.png").center()
-  
+ 
+    val bossSprite = Sprite.fromImage("Boss.png").center()
+    
     val laserSound = new SoundBuilder().buildSound(this.getClass.getClassLoader.getResourceAsStream("laser.wav"))  
 
     val backgroundSound = new SoundBuilder().buildSound(this.getClass.getClassLoader.getResourceAsStream("backgroundSound.wav"))
