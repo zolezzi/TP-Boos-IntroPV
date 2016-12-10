@@ -10,16 +10,21 @@ import com.uqbar.vainilla.events.constants.Key
 import java.awt.Rectangle
 import java.awt.Graphics2D
 import ar.pablitar.vainilla.commons.inspectors.MathInspector
+import com.uqbar.vainilla.colissions.CollisionDetector
 
-class Enemy extends QuantumPeaceMakerComponent {
+class Enemy(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent {
     
   val ancho = 50
   val alto = 50
+  this.setScene(scene)
+  val explosionNave = Resources.spriteExplosionNave
   private var _showDebug = false
   override def showDebug = _showDebug
   def showDebug_=(value: Boolean) = _showDebug = value
  
   this.setZ(5)
+  
+  var player = this.getScene.player
   
   def sideWalls = List(
     Semiplane(topLeft() + (8, 8), Vector2D(3.1, -1)),
@@ -50,23 +55,31 @@ class Enemy extends QuantumPeaceMakerComponent {
 
   override def update(state: DeltaState) = {
     this.position += this.speed * state.getDelta
-    var xp =(this.position.x1.toInt)
-    var yp =(this.position.x2.toInt)
-    rec.setBounds(xp, yp, ancho, alto)
-   // this.showDebug = !this.showDebug
-    if(state.isKeyPressed(Key.D)) {
-      this.showDebug = !this.showDebug
+    
+    if(hayColision(player)){
+      player.death
+      crearExplosionPorCollision()
     }
-
+    
     if (this.isBelowTheScreen) {
       this.getScene.score.resetCombo
       this.destroy()
     }
   }
-    
+  
+  def hayColision(player : QuantumShip)={
+     CollisionDetector.INSTANCE.collidesRectAgainstRect(this.position.x1, this.position.x2, this.ancho, this.alto,
+     player.position.x1, player.position.x2, player.ancho, player.alto)
+  }
+  
   def randomPosition() = {
     //CatchTheBallGame.width.toDouble / 2
-    QuantumPeaceMakerGame.randomizer.nextDouble * QuantumPeaceMakerGame.width
+    var position = QuantumPeaceMakerGame.randomizer.nextDouble * QuantumPeaceMakerGame.width
+    if(position < 5)
+      { position = position + 30}
+    if(position > 795)
+      { position = position - 95}
+    position
   }
 
   def isBelowTheScreen = {
@@ -105,9 +118,9 @@ class Enemy extends QuantumPeaceMakerComponent {
   }
   
   
-  def spawn() = {
-    new Enemy()
-  }
+//  def spawn() = {
+//    new Enemy()
+//  }
   
   def actualizarValores(){
     this.getScene.score.sumScore // MEJORA se suma un punto por nave eliminada
@@ -126,5 +139,12 @@ class Enemy extends QuantumPeaceMakerComponent {
    feedBack.setY(this.getY)
    this.getScene.addComponent(feedBack)
    Resources.explosion.play(0.5f)
+  }
+  
+    def crearExplosionPorCollision() ={
+      val e = new Explosion(this.explosionNave)
+      e.position = this.position
+      this.getScene.addComponent(e) 
+      this.destroy()
   }
 }

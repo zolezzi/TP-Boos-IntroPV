@@ -15,18 +15,19 @@ object Resources {
   
     def spriteWidth = (200 * scale).toInt
   
-    //val spriteExplosion = Sprite.fromImage("explosion.png").center()
-  
     val enemySprite = Sprite.fromImage("transparentUno.png").center()
   
     val laserShotSprite = Sprite.fromImage("laserRed-difuso.png").center()
+    
+    val miniLaserShotSprite = Sprite.fromImage("miniDisparo.png").center()
  
     val spriteExplosion = Sprite.fromImage("explosion.png").center()
+    
+    val spriteExplosionNave = Sprite.fromImage("explosionNave.png").center()
   
     val quantumShip = Sprite.fromImage("QuantumShip.png").center()
   
-    val enemy1 = Sprite.fromImage("transparentDos.png").center()
-    
+    val enemy1 = Sprite.fromImage("transparentDos.png").center() 
   
     val planetSprite = Sprite.fromImage("planet.png").center()
   

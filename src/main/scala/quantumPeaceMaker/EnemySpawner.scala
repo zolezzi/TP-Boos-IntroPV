@@ -48,17 +48,17 @@ class EnemySpawner(scene: QuantumPeaceMakerScene) extends GameComponent[QuantumP
   var ninjasEveryFour = 4
   
   def spawnEnemy() = {
-    val enemy = new Enemy
+    val enemy = new Enemy(this.getScene)
     ControllerTheCollision.addEnemy(enemy)
     val enemy2 = new EnemyLateral(this.getScene)
     
     if(ninjasEveryFour  == 0){
-      var ninjaShips = 1
-      while(ninjaShips > 0){
+     // var ninjaShips = 1
+      //while(ninjaShips > 0){
         this.getScene.addComponent(enemy2)
         ControllerTheCollision.addEnemyLateral(enemy2)
-        ninjaShips = ninjaShips - 1
-      }
+       // ninjaShips = ninjaShips - 1
+     // }
     ninjasEveryFour = 3
     }
     ninjasEveryFour = ninjasEveryFour - 1

@@ -3,11 +3,12 @@ package quantumPeaceMaker
 import com.uqbar.vainilla.DeltaState
 import ar.pablitar.vainilla.commons.components.SpeedyComponent
 import ar.pablitar.vainilla.commons.math.Vector2D
+import com.uqbar.vainilla.appearances.Sprite
 
-class Explosion extends SpeedyComponent[QuantumPeaceMakerScene] {
+class Explosion(sprite : Sprite) extends SpeedyComponent[QuantumPeaceMakerScene] {
   //this.speed = component.speed * 0.1
 
-  this.setAppearance(Resources.spriteExplosion)
+  this.setAppearance(sprite)
 
  
   val duration = 0.3

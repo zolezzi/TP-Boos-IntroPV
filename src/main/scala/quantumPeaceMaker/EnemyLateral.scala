@@ -8,21 +8,24 @@ import com.uqbar.vainilla.GameComponent
 import ar.pablitar.vainilla.commons.components.SpeedyComponent
 import java.awt.Graphics2D
 import scala.util.Random
+import com.uqbar.vainilla.events.constants.Key
 
 class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[QuantumPeaceMakerScene]{
-    
-  
+
+
+      var randomFeed = new Random()  
       val ancho = 50
       val alto = 50
-	    val initialSpeed: Vector2D = (200.0, 300.0)
+	    val initialSpeed: Vector2D = (this.getRand() + this.getRand() * 1.4, this.getRand() + this.getRand() * 1.3)
 	    this.setScene(scene)
-      var speed2: Vector2D = initialSpeed
+      var player = getScene.player
+	    var speed2: Vector2D = initialSpeed
       var llegueAlaDerecha = false
-      var randomFeed = new Random()
-
+      val coolDownTime = 0.12
+      var cooldown = 0.0 
       var score2 = this.getScene.score  
-	    //var x = true
-	    var x = true
+	    
+      var x = true
       val enemy1 = Resources.enemy1
       this.setAppearance(enemy1)
 
@@ -63,20 +66,18 @@ class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[Quantum
     }
     
 	   this.position += this.speed2 * state.getDelta   
-    
-//	   this.bajarSobreEjeY
-//     
-//     if(this.position.x2 > 400){
-//        this.correteSobreElEjeX
-//        this.subirSobreEjeY
-//     }
      
+	   if(this.position.x1 < (player.position.x1 + 60) && this.position.x1 > (player.position.x1 - 60)){
+       this.coolDownAndFire(state.getDelta)
+     }
+     
+	  this.cooldown = (this.cooldown - state.getDelta) max 0
+
     if (this.isBelowTheScreen) {
      // this.getScene.score.resetCombo
       this.destroy()
     }
    }  
-    
 
      def bajarSobreEjeY = {
        this.position.x2 += 5
@@ -120,7 +121,19 @@ class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[Quantum
    //this.getScene.addComponent(feedBack)
     scene.addComponent(feedBack)
   // Resources.explosion.play(0.5f)
+  }  
+  
+  def doFire = {
+    val xSpeed = (QuantumPeaceMakerGame.randomizer.nextDouble - 0.5) *  100
+    var laser = new LaserEnemyWeapon(this.getScene,this.getX, this.getY, xSpeed)
+    scene.addComponent(laser)
+   // Resources.laserSound.play(0.1f)
   }
-  
-  
+    
+    def coolDownAndFire(delta: Double): Unit = {
+    if ((this.cooldown - delta) < 0) {
+      this.doFire
+      this.cooldown = 1
+    }
+  }  
 }

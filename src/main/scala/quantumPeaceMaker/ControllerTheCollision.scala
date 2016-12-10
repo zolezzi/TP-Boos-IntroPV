@@ -55,6 +55,12 @@ object ControllerTheCollision {
     this.enemigosMosquitos = res
   }
   
+  def restart()={
+    this.enemigos = mutable.MutableList[Enemy]()
+    this.enemigosMosquitos = mutable.MutableList[EnemyLateral]()
+    this.lasers = mutable.MutableList[LaserShot]()
+  }
+  
   def getSize(){
     enemigos.size
   }

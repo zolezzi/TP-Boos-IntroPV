@@ -8,7 +8,7 @@ import java.awt.Color
 import com.uqbar.vainilla.events.constants.Key
 import java.awt.Graphics2D
 
-class QuantumShip(scene : QuantumPeaceMakerScene) extends RichGameComponent [QuantumPeaceMakerScene]{
+class QuantumShip(scene : QuantumPeaceMakerScene) extends RichGameComponent[QuantumPeaceMakerScene]{
   
   val ancho = 50
   val alto = 50
@@ -73,6 +73,11 @@ class QuantumShip(scene : QuantumPeaceMakerScene) extends RichGameComponent [Qua
 //      }
 //    }
     
+    def death: Unit = {
+      super.destroy()
+      this.scene.gameOver
+      
+    }
   
     override def position_=(v:Vector2D) = super.position_=(QuantumPeaceMakerGame.bounds.limit(v, (this.getWidth.toDouble, this.getHeight.toDouble)))
 

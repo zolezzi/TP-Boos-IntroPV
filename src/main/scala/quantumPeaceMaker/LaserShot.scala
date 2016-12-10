@@ -8,6 +8,7 @@ import java.awt.Rectangle
 import com.uqbar.vainilla.colissions.CollisionDetector
 import ar.pablitar.vainilla.commons.math.Semiplane
 import ar.pablitar.vainilla.commons.math.PhysicsUtils
+import com.uqbar.vainilla.appearances.Sprite
 
 class LaserShot(scene: QuantumPeaceMakerScene, x: Double, y: Double, xSpeed:Double) extends SpeedyComponent[QuantumPeaceMakerScene]{
 
@@ -17,6 +18,8 @@ class LaserShot(scene: QuantumPeaceMakerScene, x: Double, y: Double, xSpeed:Doub
   val diameter = 40
   val radius = diameter.toDouble / 2
   val collisionMargin = 30
+  
+  val explosion = Resources.spriteExplosion
   
   //val pelotitas = new Circle(Color.YELLOW, 20)
   //val laserShot = new Rectangle(Color.BLACK, 10, 20)
@@ -69,7 +72,7 @@ class LaserShot(scene: QuantumPeaceMakerScene, x: Double, y: Double, xSpeed:Doub
   }  
   
   def crearExplosionPorCollision() ={
-    val e = new Explosion()
+    val e = new Explosion(this.explosion)
     e.position = this.position
     this.getScene.addComponent(e) 
     this.destroy()

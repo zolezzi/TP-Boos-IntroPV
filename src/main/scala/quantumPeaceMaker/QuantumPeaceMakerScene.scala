@@ -47,6 +47,28 @@ class QuantumPeaceMakerScene(game : Game) extends GameScene{
    shop.destroyShop()
   }
  
+   var isRestartOnEnd = false
+  
+    def restartOnEnd = {
+      isRestartOnEnd = true
+    }
+  
+   override def takeStep(graphics: Graphics2D) = {
+    super.takeStep(graphics)
+
+    if (isRestartOnEnd) restart
+  }
+  
+    def gameOver = {
+    this.addComponent(new GameOverComponent(this));
+   // this.removeComponent(spawner)
+    spawner.destroy()
+  }
+
+  def restart = {
+    ControllerTheCollision.restart
+    this.getGame.setCurrentScene(new QuantumPeaceMakerScene(game))
+  }
   
   def scoreValue()={
     score.sumScore
