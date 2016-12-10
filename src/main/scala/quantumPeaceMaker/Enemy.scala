@@ -146,5 +146,5 @@ class Enemy(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent {
       e.position = this.position
       this.getScene.addComponent(e) 
       this.destroy()
-  }
+    }
 }

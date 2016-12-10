@@ -11,30 +11,18 @@ class QuantumPeaceMakerScene(game : Game) extends GameScene{
   
     this.setGame(game)
     this.addComponent(new StarFieldBackground(this, game))
- 
-  
-//  val enemy2 = new EnemyLateral
-//  val enemy3 = new EnemyLateral
-//  val my2 = new EnemyLateral
-//  val eny2 = new EnemyLateral
-//  val a = new EnemyLateral
-//  
+    
     val player = new QuantumShip(this)
     val score = new ScoreDisplay(this)
     val spawner = new EnemySpawner(this)
- 
-    this.addComponent(BOSSSpawner)
+   val spawnerBoss = new BOSSSpawner(this)
+    
+    this.addComponent(spawnerBoss)
     this.addComponent(spawner)
     this.addComponent(player)
     this.addComponent(score)
- 
-//  this.addComponent(enemy2)
-//  this.addComponent(enemy3)
-//  this.addComponent(my2)
-//  this.addComponent(eny2)
-//  this.addComponent(a)
-//  
   
+    
   //  Resources.backgroundSound.play()
  
     var isRestartOnEnd = false
@@ -42,7 +30,7 @@ class QuantumPeaceMakerScene(game : Game) extends GameScene{
     def restartOnEnd = {
       isRestartOnEnd = true
     }
-  
+    
     override def takeStep(graphics: Graphics2D) = {
       super.takeStep(graphics)
       if (isRestartOnEnd) restart
@@ -58,7 +46,7 @@ class QuantumPeaceMakerScene(game : Game) extends GameScene{
       this.getGame.setCurrentScene(new QuantumPeaceMakerScene(game))
     }
   
-    def scoreValue()={
-      score.sumScore
-    }
+//    def scoreValue()={
+//      score.sumScore
+//    }
 }

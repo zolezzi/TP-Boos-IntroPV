@@ -29,12 +29,11 @@ class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[Quantum
       val enemy1 = Resources.enemy1
       this.setAppearance(enemy1)
 
-     def getRand():Double ={
-      var res = randomFeed.nextInt() % 30
-      if(res <0)
-      {
-       res =  res * -1 + 60
-       }
+      def getRand():Double ={
+        var res = randomFeed.nextInt() % 30
+        if(res <0){
+          res =  res * -1 + 60
+        }
       return res + 60
     }
       
