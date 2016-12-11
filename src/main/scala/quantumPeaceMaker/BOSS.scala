@@ -9,7 +9,7 @@ import scala.util.Random
 
 
 
-class BOSS(scene : QuantumPeaceMakerScene) extends SpeedyComponent[QuantumPeaceMakerScene]{
+class BOSS(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent{
   
   this.setY(-500)
   this.setX(400)
@@ -43,8 +43,6 @@ class BOSS(scene : QuantumPeaceMakerScene) extends SpeedyComponent[QuantumPeaceM
        }
       return (res + 60) * 2
     }
-  
-   reset()
   
   override def update(state: DeltaState) = {
     if(w){
@@ -126,26 +124,25 @@ class BOSS(scene : QuantumPeaceMakerScene) extends SpeedyComponent[QuantumPeaceM
       }
     }
     
+    
     def crearExplosionPorCollision() ={
       val e = new Explosion(this.explosionNave)
       e.position = this.position
-      this.getScene.addComponent(e)
       super.destroy()
+      scene.addComponent(e)
+      this.setY(10000)
+      scene.removeComponent(scene.spawnerBoss.boss)   
+      
     }
     
     def descontarVida(){
       this.life = this.life - 1
     }
     
-    def chequearVida()={
+    def chequearVida(){
       if(this.life <= 0){
         crearExplosionPorCollision()
       }
     }
     
-    def reset() = {
-      speed = initialSpeed
-      this.setDestroyPending(false)
-      this
-  }
 }

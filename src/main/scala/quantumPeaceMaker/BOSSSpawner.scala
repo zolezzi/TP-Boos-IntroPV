@@ -10,9 +10,10 @@ class BOSSSpawner(scene : QuantumPeaceMakerScene ) extends GameComponent[Quantum
   var llego = true  
   this.setScene(scene)
   val boss = new BOSS(this.getScene)
+ 
+  
   override def update(state: DeltaState) = {
-    
-     
+       
     scoreActual = this.getScene.score.score
     this.getScene.score.score
     

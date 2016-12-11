@@ -75,6 +75,7 @@ class QuantumShip(scene : QuantumPeaceMakerScene) extends RichGameComponent[Quan
     
     def death: Unit = {
       super.destroy()
+      this.setY(-10000)
       this.scene.gameOver
       
     }

@@ -138,7 +138,7 @@ class Enemy(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent {
    feedBack.setX(this.getX)
    feedBack.setY(this.getY)
    this.getScene.addComponent(feedBack)
-   Resources.explosion.play(0.5f)
+  // Resources.explosion.play(0.5f)
   }
   
     def crearExplosionPorCollision() ={
