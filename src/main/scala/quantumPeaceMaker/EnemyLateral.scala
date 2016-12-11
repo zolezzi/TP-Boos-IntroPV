@@ -25,7 +25,7 @@ class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[Quantum
       var cooldown = 0.0 
       var score2 = this.getScene.score  
 	    
-      var x = true
+      var choice = true
       val enemy1 = Resources.enemy1
       this.setAppearance(enemy1)
 
@@ -50,14 +50,14 @@ class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[Quantum
     if(this.position.x2 < 0){
       this.speed2 = Vector2D(-this.getRand(), this.getRand())
     }
-    if(x){
+    if(choice){
     if(this.position.x1 > 800){
       this.speed2 = Vector2D(-this.getRand(), - this.getRand())
-      x = false
+      choice = false
     }}else{
     if(this.position.x1 > 800){
       this.speed2 = Vector2D(-this.getRand(),  this.getRand())
-      x = true
+      choice = true
     }  
     }
     
