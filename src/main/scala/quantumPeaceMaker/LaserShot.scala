@@ -21,15 +21,13 @@ class LaserShot(scene: QuantumPeaceMakerScene, x: Double, y: Double, xSpeed:Doub
   
   val explosion = Resources.spriteExplosion
   
-  //val pelotitas = new Circle(Color.YELLOW, 20)
-  //val laserShot = new Rectangle(Color.BLACK, 10, 20)
   val laserShotSprite = Resources.laserShotSprite
   
   this.setAppearance(laserShotSprite)
   this.setScene(scene)
   this.setX(x)
   this.setY(y)
-  
+  var boss = this.getScene.spawnerBoss.boss
   var impacts = 0
   def maxImpacts = 1
  
@@ -63,6 +61,12 @@ class LaserShot(scene: QuantumPeaceMakerScene, x: Double, y: Double, xSpeed:Doub
         this.destroy()
       } 
     }
+    
+    if(isCollidedByBOSS(boss)){
+      this.destroy()
+      boss.descontarVida()
+      boss.chequearVida()
+    }
     applySpeed(state)
     if (isOutsideOfTheScreen){
       this.destroy
@@ -94,7 +98,7 @@ class LaserShot(scene: QuantumPeaceMakerScene, x: Double, y: Double, xSpeed:Doub
      }
   }
 
-  def checkCollisionWithCatcher = {
+  def checkCollisionWithEnemy = {
     for(enemy <- ControllerTheCollision.enemigos){
       if (enemy.bottomWall.circuloPasoDetras(this.position, this.radius)) {
         this.destroy()
@@ -120,16 +124,14 @@ class LaserShot(scene: QuantumPeaceMakerScene, x: Double, y: Double, xSpeed:Doub
       enemy.topLeft().x1, enemy.topLeft().x2, enemy.ancho, this.radius)
     }
     
+        
+    def isCollidedByBOSS(boss : BOSS) ={
+      CollisionDetector.INSTANCE.collidesCircleAgainstRect(this.position.x1 - radius, this.position.x2 - radius, this.radius,
+      boss.topLeft().x1, boss.topLeft().x2, boss.ancho, this.radius)
+    }
+    
     override def destroy() {
-     //ControllerTheCollision.removeEnemyLateral(this)
      super.destroy()
-     //laserShot.despawn(this);
   }
- /*   
-    def eleminarSi(enemy : Enemy){
-      if(enemy != null && this != null){
-        getScene.removeComponent(enemy)
-        getScene.removeComponent(this)       
-      }
-    }*/
+
 }
