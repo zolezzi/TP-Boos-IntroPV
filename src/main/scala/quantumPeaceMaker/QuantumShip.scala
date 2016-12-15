@@ -13,7 +13,7 @@ class QuantumShip(scene : QuantumPeaceMakerScene) extends RichGameComponent[Quan
   
   val ancho = 50
   val alto = 50
-  val maxHealth = 100
+  val maxHealth = 12
   
   var health = maxHealth
 
@@ -58,7 +58,7 @@ class QuantumShip(scene : QuantumPeaceMakerScene) extends RichGameComponent[Quan
      if(state.isKeyPressed(Key.CTRL)){
        weapon.coolDownAndFire(state.getDelta)
      }
-     if(state.isKeyPressed(Key.A)){
+     if(state.isKeyPressed(Key.Z)){
        this.coolDownAndFireEspansive(state.getDelta)
      }
     this.position = this.position + this.speed * state.getDelta

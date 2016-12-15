@@ -14,7 +14,7 @@ class ScoreDisplay(scene: QuantumPeaceMakerScene) extends RichGameComponent[Quan
 
   this.updateLabel
 
-  this.setX(620)
+  this.setX(600)
   this.setY(10)
   this.setZ(5)
 
