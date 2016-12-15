@@ -32,7 +32,7 @@ class EnemySpawner(scene: QuantumPeaceMakerScene) extends GameComponent[QuantumP
       spawning = !spawning
     }
     cooldownMosquito.update(state)
-    if(spawning && this.getScene.score.score >= 5000) {
+    if(spawning && this.getScene.score.score >= 1000) {
       cooldown.update(state)
     }
   }

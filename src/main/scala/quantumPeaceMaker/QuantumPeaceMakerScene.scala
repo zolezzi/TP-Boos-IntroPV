@@ -15,8 +15,9 @@ class QuantumPeaceMakerScene(game : Game) extends GameScene{
     val player = new QuantumShip(this)
     val score = new ScoreDisplay(this)
     val spawner = new EnemySpawner(this)
-   val spawnerBoss = new BOSSSpawner(this)
+    val spawnerBoss = new BOSSSpawner(this)
     
+    this.addComponent(new HealthBar(player, 10, 10))
     this.addComponent(spawnerBoss)
     this.addComponent(spawner)
     this.addComponent(player)

@@ -135,4 +135,15 @@ class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[Quantum
       this.cooldown = 1
     }
   }  
+     
+   def hasbeenHitByLaser(arg: EspansiveWaveLaser) = {
+    	  this.actualizarValores()
+    	  this.destroy()
+
+    	  var feedBack = new AttackFeedback(this.getY.toInt)
+    	  feedBack.setX(this.getX)
+    	  feedBack.setY(this.getY)
+    	  scene.addComponent(feedBack)
+  // Resources.explosion.play(0.5f)
+  }  
 }

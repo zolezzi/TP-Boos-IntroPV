@@ -29,7 +29,8 @@ class LaserEnemyWeapon (scene: QuantumPeaceMakerScene, x: Double, y: Double, xSp
       applySpeed(state)
       
       if(hayColision(player)){
-        player.death
+        player.takeDamage(1)
+        this.destroy
       }
       
       if (isOutsideOfTheScreen){

@@ -27,7 +27,7 @@ class BOSS(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent{
   val explosionNave = Resources.spriteExplosionNave
   val ancho = 150
   val alto =  150
-  var life = 2
+  var life = 50
   val bossSprite = Resources.bossSprite
   this.setAppearance(bossSprite)
   
@@ -94,7 +94,7 @@ class BOSS(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent{
 
     if (this.isBelowTheScreen) {
      // this.getScene.score.resetCombo
-      this.destroy()
+      this.destroy
     }
 	   
     if(state.isKeyPressed(Key.B)) {
@@ -108,7 +108,7 @@ class BOSS(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent{
     }
     
     def doFire = {
-      val xSpeed = (QuantumPeaceMakerGame.randomizer.nextDouble - 0.5) *  100
+      val xSpeed = (QuantumPeaceMakerGame.randomizer.nextDouble - 0.5) *  200
       var laser = new LaserEnemyWeapon(this.getScene,this.getX, this.getY, xSpeed)
       scene.addComponent(laser)
     }
@@ -128,7 +128,7 @@ class BOSS(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent{
     def crearExplosionPorCollision() ={
       val e = new Explosion(this.explosionNave)
       e.position = this.position
-      super.destroy()
+      super.destroy
       scene.addComponent(e)
       this.setY(10000)
       scene.removeComponent(scene.spawnerBoss.boss)   

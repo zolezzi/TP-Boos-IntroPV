@@ -141,6 +141,18 @@ class Enemy(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent {
   // Resources.explosion.play(0.5f)
   }
   
+  def hasbeenHitByLaser(arg: EspansiveWaveLaser) = {
+   this.actualizarValores()
+    this.destroy()
+
+   var feedBack = new AttackFeedback(this.getY.toInt)
+   feedBack.setX(this.getX)
+   feedBack.setY(this.getY)
+   this.getScene.addComponent(feedBack)
+  // Resources.explosion.play(0.5f)
+  }
+  
+  
     def crearExplosionPorCollision() ={
       val e = new Explosion(this.explosionNave)
       e.position = this.position
