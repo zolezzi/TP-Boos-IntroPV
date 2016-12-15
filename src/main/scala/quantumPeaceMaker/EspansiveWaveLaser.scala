@@ -36,18 +36,18 @@ class EspansiveWaveLaser (scene: QuantumPeaceMakerScene, x: Double, y: Double, x
     		//if(Collision.hayColision(this, enemy)){
     		if(this.isCollidedBy(enemy)){
     			// if(enemy != null && this != null){
-    			//crearExplosionPorCollision()  
+    			crearExplosionPorCollision()  
     			enemy.hasbeenHitByLaser(this)
     			//this.destroy()
     		} 
     	}
     	
-    	this.resetAnimation()
+   // 	this.resetAnimation()
     	for(enemy2 <- ControllerTheCollision.enemigosMosquitos){
-    		//if(Collision.hayColision(this, enemy)){
+    		//if(.hayColision(this, enemy)){
     		if(this.isCollidedByEnemyLateral(enemy2)){
     			// if(enemy != null && this != null){
-    			//crearExplosionPorCollision()  
+    			crearExplosionPorCollision()  
     			enemy2.hasbeenHitByLaser(this)
     			//this.destroy()
     		} 
@@ -70,7 +70,7 @@ class EspansiveWaveLaser (scene: QuantumPeaceMakerScene, x: Double, y: Double, x
     	val e = new Explosion(this.explosion)
     	e.position = this.position
     	this.getScene.addComponent(e) 
-    	this.destroy()
+    	//this.destroy()
     }
 
       def isOutsideOfTheScreen: Boolean = {
