@@ -46,8 +46,4 @@ class QuantumPeaceMakerScene(game : Game) extends GameScene{
       ControllerTheCollision.restart
       this.getGame.setCurrentScene(new QuantumPeaceMakerScene(game))
     }
-  
-//    def scoreValue()={
-//      score.sumScore
-//    }
 }
