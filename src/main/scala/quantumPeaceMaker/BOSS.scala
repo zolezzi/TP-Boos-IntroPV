@@ -25,7 +25,7 @@ class BOSS(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent{
   var randomFeed = new Random()
   var player = getScene.player
   val explosionNave = Resources.spriteExplosionNave
-  val explosionHit = Resources.spriteExplosionHit //TODO explosion sprite correcto, este no
+  val explosionHit = Resources.spriteExplosionHit  //TODO explosion sprite correcto, este no
 
   val ancho = 150
   val alto =  150
