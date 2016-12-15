@@ -137,8 +137,10 @@ class BOSS(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent{
    
     
     def descontarVida(){
-      this.life = this.life - 1
-    }
+      if(this.getY != -500){
+        this.life = this.life - 1
+      }
+     }
     
     def chequearVida(){
       if(this.life <= 0){
