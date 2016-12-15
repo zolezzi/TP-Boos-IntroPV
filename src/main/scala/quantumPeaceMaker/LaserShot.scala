@@ -83,7 +83,7 @@ class LaserShot(scene: QuantumPeaceMakerScene, x: Double, y: Double, xSpeed:Doub
   }
   
   def isOutsideOfTheScreen: Boolean = {
-    (this.position.x2 <= -650)
+    (this.position.x2 <= -5)
   }
   
     def checkCollisionWithCatcherWalls() = {

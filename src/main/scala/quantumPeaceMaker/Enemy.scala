@@ -133,9 +133,10 @@ class Enemy(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent {
   
   def hasbeenHitBy(arg: LaserShot) = {
    this.actualizarValores()
-    this.destroy()
-
-   var feedBack = new AttackFeedback(this.getY.toInt)
+   this.destroy()
+   var score = this.getY.toInt
+   if(score < 0){score * -1}
+   var feedBack = new AttackFeedback(score)
    feedBack.setX(this.getX)
    feedBack.setY(this.getY)
    this.getScene.addComponent(feedBack)
@@ -144,9 +145,11 @@ class Enemy(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent {
   
   def hasbeenHitByLaser(arg: EspansiveWaveLaser) = {
    this.actualizarValores()
-    this.destroy()
+   this.destroy()
 
-   var feedBack = new AttackFeedback(this.getY.toInt)
+   var score = this.getY.toInt
+   if(score < 0){score * -1}
+   var feedBack = new AttackFeedback(score)
    feedBack.setX(this.getX)
    feedBack.setY(this.getY)
    this.getScene.addComponent(feedBack)

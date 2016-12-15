@@ -17,7 +17,7 @@ class BOSSSpawner(scene : QuantumPeaceMakerScene ) extends GameComponent[Quantum
     scoreActual = this.getScene.score.score
     this.getScene.score.score
     
-    if(llego && scoreActual >= 7500){
+    if(llego && scoreActual >= 14000){
       this.spawnBoss()
       llego = false
       this.getScene.spawner.destroy()    

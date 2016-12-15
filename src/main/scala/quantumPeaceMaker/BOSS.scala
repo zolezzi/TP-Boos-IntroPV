@@ -25,6 +25,8 @@ class BOSS(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent{
   var randomFeed = new Random()
   var player = getScene.player
   val explosionNave = Resources.spriteExplosionNave
+  val explosionHit = Resources.spriteExplosionHit //TODO explosion sprite correcto, este no
+
   val ancho = 150
   val alto =  150
   var life = 50
@@ -139,6 +141,11 @@ class BOSS(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent{
     def descontarVida(){
       if(this.getY != -500){
         this.life = this.life - 1
+        
+        //Recibir un golpe genera una explosion
+        val e = new Explosion(this.explosionHit)
+    	  e.position = this.position
+    	  this.getScene.addComponent(e) 
       }
      }
     

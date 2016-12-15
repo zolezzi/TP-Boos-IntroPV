@@ -22,6 +22,8 @@ object Resources {
  
     val spriteExplosion = Sprite.fromImage("explosion.png").center()
     
+    val spriteExplosionHit = Sprite.fromImage("bossExplosionTransFG.png").center().scale(0.5)
+    
     val spriteExplosionNave = Sprite.fromImage("explosionNave.png").center()
   
     val quantumShip = Sprite.fromImage("QuantumShip.png").center()
@@ -40,11 +42,14 @@ object Resources {
 
     val spriteSheet =  Sprite.fromImage("explosionNave.png").center()
     
+    val blueBall =  Sprite.fromImage("blueShootBallTransparent.png").center()
+    
     val spritesheet = Sprite.fromImage("thundeTransparentAnimation.png").scale(scale)
     
-    val laserAnimation = animationFromSpritesheet(spritesheet, spriteWidth, spriteHeight, 0.40)
+    val laserAnimation = animationFromSpritesheet(blueBall, spriteWidth, spriteHeight, 0.40)
     
-    val laserIdle = spritesheet.crop(0, 0, spriteWidth, spriteHeight).center()
+    val laserIdle = Sprite.fromImage("explosionNave.png").center()
+    //val laserIdle = spritesheet.crop(0, 0, spriteWidth, spriteHeight).center()
     
  
   def animationFromSpritesheet(spritesheet: Sprite, width: Int, height: Int, frameTime: Double) = {

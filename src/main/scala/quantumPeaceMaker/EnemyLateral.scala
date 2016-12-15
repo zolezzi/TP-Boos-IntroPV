@@ -10,20 +10,32 @@ import java.awt.Graphics2D
 import scala.util.Random
 import com.uqbar.vainilla.events.constants.Key
 
-class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[QuantumPeaceMakerScene]{
+class EnemyLateral(scene:QuantumPeaceMakerScene, fromWhere: Boolean) extends SpeedyComponent[QuantumPeaceMakerScene]{
 
 
       var randomFeed = new Random()  
       val ancho = 50
       val alto = 50
-	    val initialSpeed: Vector2D = (this.getRand() + this.getRand() * 1.4, this.getRand() + this.getRand() * 1.3)
 	    this.setScene(scene)
+      var speedToVal: Vector2D = (10, 10)
       var player = getScene.player
-	    var speed2: Vector2D = initialSpeed
       var llegueAlaDerecha = false
       val coolDownTime = 0.12
       var cooldown = 0.0 
-      var score2 = this.getScene.score  
+      var score2 = this.getScene.score
+      
+      var leftOrRight = fromWhere
+      if(leftOrRight){
+        this.setX(790)
+        this.speedToVal = (-this.getRand() - this.getRand() * 1.4, this.getRand() + this.getRand() * 1.3)
+        leftOrRight = false
+      }else{
+        this.setX(0)
+        this.speedToVal = (this.getRand() + this.getRand() * 1.4, this.getRand() + this.getRand() * 1.3)
+        leftOrRight = true
+      }
+	    val initialSpeed: Vector2D = this.speedToVal
+      var speed2: Vector2D = initialSpeed
 	    
       var choice = true
       val enemy1 = Resources.enemy1
@@ -36,8 +48,6 @@ class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[Quantum
         }
       return res + 60
     }
-      
-      
       
     override def update(state: DeltaState) = {
    
@@ -113,8 +123,9 @@ class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[Quantum
    this.actualizarValores()
    ControllerTheCollision.removeEnemyLateral(this) 
    this.destroy()
-
-   var feedBack = new AttackFeedback(this.getY.toInt)
+   var score = this.getY.toInt
+   if(score < 0){score * -1}
+   var feedBack = new AttackFeedback(score)
    feedBack.setX(this.getX)
    feedBack.setY(this.getY)
    //this.getScene.addComponent(feedBack)
@@ -138,11 +149,14 @@ class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[Quantum
      
    def hasbeenHitByLaser(arg: EspansiveWaveLaser) = {
     	  this.actualizarValores()
+    	  ControllerTheCollision.removeEnemyLateral(this)
     	  this.destroy()
 
-    	  var feedBack = new AttackFeedback(this.getY.toInt)
-    	  feedBack.setX(this.getX)
-    	  feedBack.setY(this.getY)
+         var score = this.getY.toInt
+         if(score < 0){score * -1}
+         var feedBack = new AttackFeedback(score)
+         feedBack.setX(this.getX)
+         feedBack.setY(this.getY)
     	  scene.addComponent(feedBack)
      // Resources.explosion.play(0.5f)
   }  

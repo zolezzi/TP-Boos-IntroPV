@@ -10,13 +10,12 @@ class EspansiveWaveLaser (scene: QuantumPeaceMakerScene, x: Double, y: Double, x
     val ancho = 10
     val alto = 20
     this.setAppearance(
-      Resources.laserIdle
+      Resources.blueBall
     )
   
     val explosion = Resources.spriteExplosion
 
-    val laserShotSprite = Resources.laserShotSprite
-
+    val laserShotSprite = Resources.blueBall
    
     this.setScene(scene)
     this.setX(x)
@@ -28,7 +27,7 @@ class EspansiveWaveLaser (scene: QuantumPeaceMakerScene, x: Double, y: Double, x
 
     var ene = ControllerTheCollision.enemigos
     //asigna la velocidad de el disparo
-   // this.speed = (xSpeed, -400.0)
+    this.speed = (xSpeed, -300.0)
 
     override def update(state: DeltaState) = {
     	super.update(state)
@@ -37,9 +36,9 @@ class EspansiveWaveLaser (scene: QuantumPeaceMakerScene, x: Double, y: Double, x
     		//if(Collision.hayColision(this, enemy)){
     		if(this.isCollidedBy(enemy)){
     			// if(enemy != null && this != null){
-    			crearExplosionPorCollision()  
+    			//crearExplosionPorCollision()  
     			enemy.hasbeenHitByLaser(this)
-    			this.destroy()
+    			//this.destroy()
     		} 
     	}
     	
@@ -48,9 +47,9 @@ class EspansiveWaveLaser (scene: QuantumPeaceMakerScene, x: Double, y: Double, x
     		//if(Collision.hayColision(this, enemy)){
     		if(this.isCollidedByEnemyLateral(enemy2)){
     			// if(enemy != null && this != null){
-    			crearExplosionPorCollision()  
+    			//crearExplosionPorCollision()  
     			enemy2.hasbeenHitByLaser(this)
-    			this.destroy()
+    			//this.destroy()
     		} 
     	}
 
@@ -75,7 +74,7 @@ class EspansiveWaveLaser (scene: QuantumPeaceMakerScene, x: Double, y: Double, x
     }
 
       def isOutsideOfTheScreen: Boolean = {
-    		(this.position.x2 <= -650)
+    		(this.position.x2 <= -5)
     	}
 
 
@@ -92,10 +91,8 @@ class EspansiveWaveLaser (scene: QuantumPeaceMakerScene, x: Double, y: Double, x
     	}	    
     	
     	def resetAnimation ()={
-    	    Resources.laserAnimation.reset()
-          this.setAppearance(TimedAppearance.fromAnimationTo(this, Resources.laserAnimation, Resources.laserIdle))
- 
-    	  
+    	   // Resources.laserAnimation.reset()
+        //  this.setAppearance(TimedAppearance.fromAnimationTo(this, Resources.laserAnimation, Resources.blueBall))
     	}
     	
     	override def destroy() {

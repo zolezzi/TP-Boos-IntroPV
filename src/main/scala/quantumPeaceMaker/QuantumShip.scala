@@ -108,7 +108,7 @@ class QuantumShip(scene : QuantumPeaceMakerScene) extends RichGameComponent[Quan
       position + (Vector2D(this.getWidth, this.getHeight) * 0.5)
     }
    
-      val coolDownTime = 0.12
+      val coolDownTime = 3.12
   
     def doFire = {
     val xSpeed = (QuantumPeaceMakerGame.randomizer.nextDouble - 0.5) *  100

@@ -26,7 +26,7 @@ class EnemySpawner(scene: QuantumPeaceMakerScene) extends GameComponent[QuantumP
   
   val cooldown = Cooldown(0.6, () => spawnEnemy())
   val cooldownMosquito = Cooldown(0.2,() => spawnEnemyMosquito())
-  
+      
   override def update(state: DeltaState) = {
     if(state.isKeyPressed(Key.SPACE)) {
       spawning = !spawning
@@ -58,8 +58,11 @@ class EnemySpawner(scene: QuantumPeaceMakerScene) extends GameComponent[QuantumP
  
   }
   
+  var rightOrLeft = false
   def spawnEnemyMosquito()={
-     val enemy2 = new EnemyLateral(this.getScene)
+     //this.getRand() % 2 == 1 
+      val enemy2 = new EnemyLateral(this.getScene, rightOrLeft)
+      rightOrLeft =  !rightOrLeft
     
       if(ninjasEveryFour  == 0){
         this.getScene.addComponent(enemy2)
