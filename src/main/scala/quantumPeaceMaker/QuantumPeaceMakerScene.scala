@@ -17,6 +17,7 @@ class QuantumPeaceMakerScene(game : Game) extends GameScene{
     val spawner = new EnemySpawner(this)
     val spawnerBoss = new BOSSSpawner(this)
     
+    
     this.addComponent(new HealthBar(player, 10, 10))
     this.addComponent(spawnerBoss)
     this.addComponent(spawner)

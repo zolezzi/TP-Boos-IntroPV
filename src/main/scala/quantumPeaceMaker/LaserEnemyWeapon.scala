@@ -38,6 +38,7 @@ class LaserEnemyWeapon (scene: QuantumPeaceMakerScene, x: Double, y: Double, xSp
       }    
     }
   
+    
   override def applySpeed(state: DeltaState, speed: Vector2D = this.speed) = {
     this.position = positionAfterSpeed(state, speed)
   }

@@ -144,6 +144,6 @@ class EnemyLateral(scene:QuantumPeaceMakerScene) extends SpeedyComponent[Quantum
     	  feedBack.setX(this.getX)
     	  feedBack.setY(this.getY)
     	  scene.addComponent(feedBack)
-  // Resources.explosion.play(0.5f)
+     // Resources.explosion.play(0.5f)
   }  
 }

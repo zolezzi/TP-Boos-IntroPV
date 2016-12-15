@@ -19,6 +19,7 @@ class BarAppearance(bar: Bar, width: Int, height: Int, backColor: Color, frontCo
     new BarAppearance(bar, (width * scaleX).toInt, (height * scaleY).toInt, backColor, frontColor, marginRatio)
   }
 
+  
   override def copy[BarAppearance](): BarAppearance = { this.clone.asInstanceOf[BarAppearance] }
 
   def getWidth = width

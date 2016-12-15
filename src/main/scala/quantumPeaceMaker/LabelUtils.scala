@@ -18,6 +18,7 @@ object LabelUtils {
   val lifeFont = font(lifeFontSize)
   def lifeLabel(initialText: String) = new Label(lifeFont, Color.ORANGE, initialText).center()
   
+  
   val nameFont = font(nameFontSize)
   def warriorNameLabel(name: String) = new Label(nameFont, Color.LIGHT_GRAY, name).center() 
 }

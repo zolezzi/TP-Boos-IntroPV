@@ -42,6 +42,7 @@ class EspansiveWaveLaser (scene: QuantumPeaceMakerScene, x: Double, y: Double, x
     			this.destroy()
     		} 
     	}
+    	
     	this.resetAnimation()
     	for(enemy2 <- ControllerTheCollision.enemigosMosquitos){
     		//if(Collision.hayColision(this, enemy)){

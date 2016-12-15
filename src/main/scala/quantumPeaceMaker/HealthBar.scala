@@ -8,4 +8,5 @@ class HealthBar(ship:QuantumShip, x:Double, y:Double) extends Bar("Health", Colo
   def getCurrentValue = ship.health
   def getMaxValue = ship.maxHealth
   
+  
 }

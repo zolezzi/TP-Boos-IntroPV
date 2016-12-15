@@ -23,4 +23,5 @@ abstract class Bar(val label: String, frontColor: Color, backColor: Color, x: Do
 
   this.setAppearance(new BarAppearance(this, Bar.barWidth, backColor, frontColor))
 
+  
 }

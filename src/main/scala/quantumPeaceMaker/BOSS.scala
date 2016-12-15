@@ -134,6 +134,7 @@ class BOSS(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent{
       scene.removeComponent(scene.spawnerBoss.boss)   
       
     }
+   
     
     def descontarVida(){
       this.life = this.life - 1

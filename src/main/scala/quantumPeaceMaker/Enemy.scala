@@ -67,6 +67,7 @@ class Enemy(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent {
     }
   }
   
+  
   def hayColision(player : QuantumShip)={
      CollisionDetector.INSTANCE.collidesRectAgainstRect(this.position.x1, this.position.x2, this.ancho, this.alto,
      player.position.x1, player.position.x2, player.ancho, player.alto)
