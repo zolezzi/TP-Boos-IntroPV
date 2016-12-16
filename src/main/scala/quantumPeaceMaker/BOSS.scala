@@ -132,6 +132,7 @@ class BOSS(scene : QuantumPeaceMakerScene) extends QuantumPeaceMakerComponent{
       e.position = this.position
       super.destroy
       scene.addComponent(e)
+      scene.win
       this.setY(10000)
       scene.removeComponent(scene.spawnerBoss.boss)   
       

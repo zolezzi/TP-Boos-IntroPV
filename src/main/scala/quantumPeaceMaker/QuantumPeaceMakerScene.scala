@@ -42,6 +42,13 @@ class QuantumPeaceMakerScene(game : Game) extends GameScene{
       this.addComponent(new GameOverComponent(this));
       spawner.destroy()
     }
+    
+    def win = {
+      val win = new WinComponent(this)
+      win.incrementalLevel()
+      this.addComponent(win)
+      spawner.destroy()
+    }
 
     def restart = {
       ControllerTheCollision.restart
